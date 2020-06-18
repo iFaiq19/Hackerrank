@@ -8,14 +8,8 @@ import sys
 
 # Complete the bigSorting function below.
 def bigSorting(unsorted):
-    temp = []
-    sort = []
-    for i in unsorted:
-        temp.append(int(i))
-    temp=sorted(temp)
-    for _ in temp:
-        sort.append(str(_))
-    return sort
+    unsorted.sort(key=int)
+    return unsorted
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
 
