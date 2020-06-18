@@ -8,29 +8,18 @@ import sys
 
 # Complete the minimumNumber function below.
 def minimumNumber(n, password):
-    num = "0123456789"
-    low = "abcdefghijklmnopqrstuvwxyz"
-    up = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    char = "!@#$%^&*()-+"
-    count=0
-    dict = {'num':0, 'up':0,'low':0,'char':0}
-    if n<=6:
-        return 6 - n
-    else:
-        for i in range(n):
-            if password[i] in num:
-                dict['num'] += 1
-            elif password[i] in low:
-                dict['low'] += 1
-            elif password[i] in up:
-                dict['up'] += 1
-            else:
-                dict['char'] += 1
-        for i in dict:
-            if dict[i] == 0:
-                count += 1
-    return count
-            
+    # Return the minimum number of characters to make the password strong
+    count = 0    
+    if any(i.isdigit() for i in password)==False:
+        count+=1
+    if any(i.islower() for i in password)==False:
+        count+=1
+    if any(i.isupper() for i in password)==False:
+        count+=1
+    if any(i in '!@#$%^&*()-+' for i in password)==False:
+        count+=1
+    return max(count,6-n)
+
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
 
