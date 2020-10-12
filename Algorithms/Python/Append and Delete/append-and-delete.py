@@ -10,6 +10,7 @@ import sys
 def appendAndDelete(s, t, k):
     if len(s)+len(t)<k:
         return 'Yes'
+        
     sameChar = 0
     for i,j in zip(s, t):
         if i == j:
